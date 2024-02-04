@@ -20,7 +20,7 @@ body {
 .data-container {
     align-items: center;
     height: 4.5rem;
-    border: 0.0125rem solid;
+    /* border: 0.0125rem solid; */
     text-align: center;
 }
 input {
@@ -29,6 +29,9 @@ input {
     color: black;
     padding: 0.4rem;
     width: 13.25rem;
+}
+input:focus {
+    background-color: rgb(160, 185, 252);
 }
 label {
     display: inline-block;
@@ -62,21 +65,28 @@ button:active {
     background-color: rgb(0, 201, 191); 
     color: black;
 }
-
-
-
-
-
-
-
-
-
-
 .form-control[aria-invalid="true"] {
     outline: 2px solid rgb(216, 3, 3);
 }
 .input-msg-error {
     display: none;
     color: rgb(216, 3, 3);
+}
+
+@media (max-width: 620px) {
+    .data-container {
+        display: flex;
+        flex-direction: column;
+        height: 6.25rem;
+    }
+    label {
+        text-align: center;
+    }
+    input {
+        width: 100%;
+    }
+    button {
+        width: 14.25rem;
+    }
 }
 

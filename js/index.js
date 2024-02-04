@@ -38,7 +38,7 @@ const onSubmit = e => {
         nameError.style.display = "none"
     } else {
         nameInput.ariaInvalid = true
-        nameError.innerText = "Debe colocar caracteres alfabéticos."
+        nameError.innerText = "Complete su nombre"
         nameError.style.display = "block"
         validForm = false
     }
@@ -49,7 +49,7 @@ const onSubmit = e => {
         mailError.style.display = "none"
     } else {
         mailInput.ariaInvalid = true
-        mailError.innerText = "Ingrese un email correcto."
+        mailError.innerText = "Email incorrecto"
         mailError.style.display = "block"
         validForm = false
     }
@@ -60,7 +60,7 @@ const onSubmit = e => {
         dateError.style.display = "none"
     } else {
         dateInput.ariaInvalid = true
-        dateError.innerText = "Debe colocar su fecha de nacimiento."
+        dateError.innerText = "Complete su fecha"
         dateError.style.display = "block"
         validForm = false
     }
@@ -71,7 +71,7 @@ const onSubmit = e => {
         idError.style.display = "none"
     } else {
         idInput.ariaInvalid = true
-        idError.innerText = "No existe ese ID."
+        idError.innerText = "No existe ese ID"
         idError.style.display = "block"
         validForm = false
     }
