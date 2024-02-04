@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desafío 16</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+    <form id="uploadForm" onsubmit="onSubmit(event)">
+        <div>
+          <label for="name" class="form-label">Nombre</label>
+          <input type="text" class="form-control" id="name" name="name" required>
+          <p id="nameError" class="input-msg-error"></p>
+        </div>
+        <div>
+            <label for="mail" class="form-label">Email</label>
+            <input type="email" class="form-control" id="mail" name="mail" required>
+            <p id="mailError" class="input-msg-error"></p>
+        </div>
+        <div>
+            <label for="date" class="form-label">Fecha de nacimiento</label>
+            <input type="date" class="form-control" id="date" name="date" required>
+            <p id="dateError" class="input-msg-error"></p>
+        </div>
+        <div>
+            <label for="id" class="form-label">ID</label>
+            <input type="number" class="form-control" id="id" name="id" disabled>
+            <p id="idError" class="input-msg-error"></p>
+        </div>
+        <button type="submit">Agregar</button>
+        <button type="upload">Actualizar</button>
+        <button type="delete">Eliminar</button>
+    </form>
+    <script src="./js/validations.js"></script>
+    <script src="./js/index.js"></script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+html {
+    font-size: 16px;
+}
+
+
+
+
+
+
+
+
+.form-control[aria-invalid="true"] {
+    outline: 2px solid rgb(182, 17, 17);
+}
+
+.input-msg-error {
+    display: none;
+    color: rgb(182, 17, 17)
+}
+
