@@ -1,6 +1,69 @@
 html {
     font-size: 16px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
+body {
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+#uploadForm {
+    background-color: rgb(111, 129, 230);
+    border-radius: 1rem;
+    box-shadow: 0.25rem 0.25rem 1rem rgb(122, 122, 122);
+    margin: 1rem;
+    padding: 2rem;
+}
+.data-container {
+    align-items: center;
+    height: 4.5rem;
+    border: 0.0125rem solid;
+    text-align: center;
+}
+input {
+    background-color: rgb(204, 214, 241);
+    border-radius: 0.5rem;
+    color: black;
+    padding: 0.4rem;
+    width: 12rem;
+}
+label {
+    display: inline-block;
+    color: black;
+    font-weight: bold;
+    margin: 0.25rem 0 0 0;
+    text-align: left;
+    padding: 0.2rem 0;
+    width: 12rem;
+}
+p {
+    margin: 0.125rem;
+    text-align: left;
+}
+button {
+    background-color: rgb(0, 42, 158);
+    border-radius: 0.5rem;
+    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2);
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    margin: 0.75rem;
+    padding: 0.5rem 0;
+    width: 7.25rem;
+}
+button:hover {
+    background-color: rgb(0, 56, 211);
+    cursor: pointer;
+}
+button:active {
+    background-color: rgb(0, 201, 191); 
+    color: black;
+}
+
+
 
 
 
@@ -10,11 +73,10 @@ html {
 
 
 .form-control[aria-invalid="true"] {
-    outline: 2px solid rgb(182, 17, 17);
+    outline: 2px solid rgb(216, 3, 3);
 }
-
 .input-msg-error {
     display: none;
-    color: rgb(182, 17, 17)
+    color: rgb(216, 3, 3);
 }
 

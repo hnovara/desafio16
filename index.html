@@ -9,31 +9,30 @@
 </head>
 <body>
     <form id="uploadForm" onsubmit="onSubmit(event)">
-        <div>
+        <div class="data-container">
           <label for="name" class="form-label">Nombre</label>
           <input type="text" class="form-control" id="name" name="name">
           <p id="nameError" class="input-msg-error"></p>
         </div>
-        <div>
+        <div class="data-container">
             <label for="mail" class="form-label">Email</label>
             <input type="email" class="form-control" id="mail" name="mail">
             <p id="mailError" class="input-msg-error"></p>
         </div>
-        <div>
+        <div class="data-container">
             <label for="date" class="form-label">Fecha de nacimiento</label>
             <input type="date" class="form-control" id="date" name="date">
             <p id="dateError" class="input-msg-error"></p>
         </div>
-        <div>
-            <label for="id" class="form-label">ID</label>
+        <div class="data-container">
+            <label for="id" class="form-label">Número de ID</label>
             <input type="number" class="form-control" id="id" name="id">
             <p id="idError" class="input-msg-error"></p>
         </div>
         <button type="submit">Agregar</button>
-        <button type="upload">Actualizar</button>
-        <button type="delete">Eliminar</button>
+        <button type="submit">Actualizar</button>
+        <button type="reset">Eliminar</button>
     </form>
-    <script src="./js/validations.js"></script>
     <script src="./js/index.js"></script>
 </body>
 </html>
