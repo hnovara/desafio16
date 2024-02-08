@@ -71,6 +71,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
             localStorage.setItem('contacts', JSON.stringify(contacts));
             contactForm.reset();
+            document.getElementById('submit-btn').innerText = 'Enviar';
             displayContacts();
         } else {
             alert('Complete todos los datos');
@@ -93,6 +94,6 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('contactId').value = index;
         document.getElementById('submit-btn').innerText = 'Actualizar';
     };
-
+    
     displayContacts();
 });
