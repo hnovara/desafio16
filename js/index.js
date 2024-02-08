@@ -1,84 +1,99 @@
-const saveContact = contact => {
-    const form = document.getElementById("uploadForm")
-    const initialValue = localStorage.getItem("contacts") || JSON.stringify([])
-    const values = JSON.parse(initialValue)
-    const contactWithId = {
-        id: values.length + 1,
-        ...contact
-    }
-    if (values.length) {
-        const newValues = [ ...values, contactWithId ]
-        const newValStg = JSON.stringify(newValues)
-        localStorage.setItem("contacts", newValStg)
-    } else {
-        const initialContacts = JSON.stringify([contactWithId])
-        localStorage.setItem("contacts", initialContacts)
-    }
-    form.reset()
-    alert("Contacto cargado")
-}
+document.addEventListener('DOMContentLoaded', function() {
+    const contactForm = document.getElementById('contact-form');
+    const contactList = document.getElementById('contact-list');
 
-const onSubmit = e => {
-    e.preventDefault()
-    let validForm = true
-    const nameInput = document.getElementById("name")
-    const mailInput = document.getElementById("mail")
-    const dateInput = document.getElementById("date")
-    const idInput = document.getElementById("id")
+    let contacts = JSON.parse(localStorage.getItem('contacts')) || [];
 
-    const nameError = document.getElementById("nameError")
-    const mailError = document.getElementById("mailError")
-    const dateError = document.getElementById("dateError")
-    const idError = document.getElementById("idError")
-    
-    // Nombre
-    if (nameInput.value) {
-        nameInput.ariaInvalid = false
-        nameError.innerText = ""
-        nameError.style.display = "none"
-    } else {
-        nameInput.ariaInvalid = true
-        nameError.innerText = "Complete su nombre"
-        nameError.style.display = "block"
-        validForm = false
-    }
-    //Email
-    if (validateEmails(mailInput.value)) {
-        mailInput.ariaInvalid = false
-        mailError.innerText = ""
-        mailError.style.display = "none"
-    } else {
-        mailInput.ariaInvalid = true
-        mailError.innerText = "Email incorrecto"
-        mailError.style.display = "block"
-        validForm = false
-    }
-    // Fecha de nacimiento
-    if (dateInput.value) {
-        dateInput.ariaInvalid = false
-        dateError.innerText = ""
-        dateError.style.display = "none"
-    } else {
-        dateInput.ariaInvalid = true
-        dateError.innerText = "Complete su fecha"
-        dateError.style.display = "block"
-        validForm = false
+    function displayContacts() {
+        contactList.innerHTML = '';
+        contacts.forEach(function(contact, index) {
+            const li = document.createElement('li');
+            li.innerHTML = `<strong>${contact.name}</strong> - ${contact.email} - ${contact.birthdate}
+                            <button class="edit-btn" onclick="editContact(${index})">Edit</button>
+                            <button class="delete-btn" onclick="deleteContact(${index})">Delete</button>`;
+            contactList.appendChild(li);
+        });
     }
 
-    
-    if (validForm) {
-        const contact = {
-            name: nameInput.value,
-            mail: mailInput.value,
-            date: dateInput.value,
+    contactForm.addEventListener('submit', function(event) {
+        event.preventDefault();
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const birthdate = document.getElementById('birthdate').value;
+        const contactId = document.getElementById('contactId').value;
+
+		const nameError = document.getElementById("nameError")
+		const emailError = document.getElementById("mailError")
+		const birthdateError = document.getElementById("dateError")
+	
+		const validateEmails = (email) => {
+			const regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+			return regex.test(email)
+		}
+
+		  // Nombre
+		  if (name.value) {
+			name.ariaInvalid = false
+			nameError.innerText = ""
+			nameError.style.display = "none"
+		} else {
+			name.ariaInvalid = true
+			nameError.innerText = "Complete su nombre"
+			nameError.style.display = "block"
+		}
+		//Email
+		if (validateEmails(email.value)) {
+			email.ariaInvalid = false
+			emailError.innerText = ""
+			emailError.style.display = "none"
+		} else {
+			email.ariaInvalid = true
+			emailError.innerText = "Email incorrecto"
+			emailError.style.display = "block"
+		}
+		// Fecha de nacimiento
+		if (birthdate.value) {
+			birthdate.ariaInvalid = false
+			birthdateError.innerText = ""
+			birthdateError.style.display = "none"
+		} else {
+			birthdate.ariaInvalid = true
+			birthdateError.innerText = "Complete su fecha"
+			birthdateError.style.display = "block"
+		}
+
+        if (name && email && birthdate) {
+            if (contactId) {
+                contacts[contactId] = { name, email, birthdate };
+            } else {
+                contacts.push({ name, email, birthdate });
+            }
+
+            localStorage.setItem('contacts', JSON.stringify(contacts));
+            contactForm.reset();
+            document.getElementById('submit-btn').innerText = 'Add Contact';
+            displayContacts();
+        } else {
+            alert('Complete todos los datos');
         }
-        saveContact(contact)
-    }
-    
-}
+    });
 
+    window.deleteContact = function(index) {
+        if (confirm('Quiere eliminar el contacto?')) {
+            contacts.splice(index, 1);
+            localStorage.setItem('contacts', JSON.stringify(contacts));
+            displayContacts();
+        }
+    };
 
-const validateEmails = (email) => {
-    const regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-    return regex.test(email)
-}
+    window.editContact = function(index) {
+        const contact = contacts[index];
+        document.getElementById('name').value = contact.name;
+        document.getElementById('email').value = contact.email;
+        document.getElementById('birthdate').value = contact.birthdate;
+        document.getElementById('contactId').value = index;
+        document.getElementById('submit-btn').innerText = 'Cambios actualizados';
+    };
+
+    displayContacts();
+});

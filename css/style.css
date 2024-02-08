@@ -10,7 +10,7 @@ body {
     display: flex;
     flex-direction: column;
 }
-#uploadForm {
+#contact-form {
     background-color: rgb(111, 129, 230);
     border-radius: 1rem;
     box-shadow: 0.25rem 0.25rem 1rem rgb(122, 122, 122);
@@ -72,6 +72,33 @@ button:active {
     display: none;
     color: rgb(216, 3, 3);
 }
+ul {
+    list-style: none;
+    padding: 0;
+}
+li {
+    margin-bottom: 1rem;
+}
+.edit-btn {
+    background-color: #66ff94;
+    color: rgb(0, 0, 0);
+    border: none;
+    padding: 0.25rem 0.75rem;
+    cursor: pointer;
+}
+.delete-btn {
+    background-color: #ff6666;
+    color: rgb(0, 0, 0);
+    border: none;
+    padding: 0.25rem 0.5rem;
+    cursor: pointer;
+}
+.edit-btn:hover {
+    background-color: #0aff53;
+}
+.delete-btn:hover {
+    background-color: #ff4d4d;
+}
 
 @media (max-width: 620px) {
     .data-container {
@@ -89,4 +116,3 @@ button:active {
         width: 14.25rem;
     }
 }
-
