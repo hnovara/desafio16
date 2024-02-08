@@ -9,8 +9,8 @@ document.addEventListener('DOMContentLoaded', function() {
         contacts.forEach(function(contact, index) {
             const li = document.createElement('li');
             li.innerHTML = `<strong>${contact.name}</strong> - ${contact.email} - ${contact.birthdate}
-                            <button class="edit-btn" onclick="editContact(${index})">Edit</button>
-                            <button class="delete-btn" onclick="deleteContact(${index})">Delete</button>`;
+                            <button class="edit-btn" onclick="editando(${index})">Editar</button>
+                            <button class="delete-btn" onclick="borrando(${index})">Borrar</button>`;
             contactList.appendChild(li);
         });
     }
@@ -78,22 +78,27 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    window.deleteContact = function(index) {
-        if (confirm('Quiere eliminar el contacto?')) {
+    window.borrando = function(index) {
+        if (confirm('¿Quiere eliminar el contacto?')) {
             contacts.splice(index, 1);
             localStorage.setItem('contacts', JSON.stringify(contacts));
             displayContacts();
         }
     };
 
-    window.editContact = function(index) {
+    window.editando = function(index) {
         const contact = contacts[index];
         document.getElementById('name').value = contact.name;
         document.getElementById('email').value = contact.email;
         document.getElementById('birthdate').value = contact.birthdate;
         document.getElementById('contactId').value = index;
         document.getElementById('submit-btn').innerText = 'Actualizar';
-    };
+
+        document.getElementById('contact-form').addEventListener('reset', function() {
+        document.getElementById('submit-btn').innerText = 'Add Contact';
+        document.getElementById('contactId').value = '';
+    }, { once: true });
+};
     
     displayContacts();
 });
