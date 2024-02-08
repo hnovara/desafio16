@@ -92,7 +92,7 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('email').value = contact.email;
         document.getElementById('birthdate').value = contact.birthdate;
         document.getElementById('contactId').value = index;
-        document.getElementById('submit-btn').innerText = 'Cambios actualizados';
+        document.getElementById('submit-btn').innerText = 'Actualizar';
     };
 
     displayContacts();
