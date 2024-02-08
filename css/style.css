@@ -75,23 +75,30 @@ button:active {
 ul {
     list-style: none;
     padding: 0;
+    width: 42rem;
 }
 li {
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     margin-bottom: 1rem;
 }
 .edit-btn {
     background-color: #66ff94;
     color: rgb(0, 0, 0);
     border: none;
-    padding: 0.25rem 0.75rem;
+    padding: 0.25rem 0.25rem;
     cursor: pointer;
+    width: 4rem;
 }
 .delete-btn {
     background-color: #ff6666;
     color: rgb(0, 0, 0);
     border: none;
-    padding: 0.25rem 0.5rem;
+    padding: 0.25rem 0.25rem;
     cursor: pointer;
+    width: 4rem;
 }
 .edit-btn:hover {
     background-color: #0aff53;
@@ -100,7 +107,7 @@ li {
     background-color: #ff4d4d;
 }
 
-@media (max-width: 620px) {
+@media (max-width: 700px) {
     .data-container {
         display: flex;
         flex-direction: column;
@@ -114,5 +121,16 @@ li {
     }
     button {
         width: 14.25rem;
+    }
+    ul {
+        width: 20rem;
+    }
+    li {
+        margin-bottom: 1rem;
+        display: block;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1rem;
     }
 }

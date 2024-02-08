@@ -9,8 +9,10 @@ document.addEventListener('DOMContentLoaded', function() {
         contacts.forEach(function(contact, index) {
             const li = document.createElement('li');
             li.innerHTML = `<strong>${contact.name}</strong> - ${contact.email} - ${contact.birthdate}
-                            <button class="edit-btn" onclick="editando(${index})">Editar</button>
-                            <button class="delete-btn" onclick="borrando(${index})">Borrar</button>`;
+                            <div>
+                                <button class="edit-btn" onclick="editando(${index})">Editar</button>
+                                <button class="delete-btn" onclick="borrando(${index})">Borrar</button>
+                            </div>`;
             contactList.appendChild(li);
         });
     }
