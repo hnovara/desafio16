@@ -64,24 +64,13 @@ const onSubmit = e => {
         dateError.style.display = "block"
         validForm = false
     }
-    // ID
-    if (idInput.value) {
-        idInput.ariaInvalid = false
-        idError.innerText = ""
-        idError.style.display = "none"
-    } else {
-        idInput.ariaInvalid = true
-        idError.innerText = "No existe ese ID"
-        idError.style.display = "block"
-        validForm = false
-    }
+
     
     if (validForm) {
         const contact = {
             name: nameInput.value,
             mail: mailInput.value,
             date: dateInput.value,
-            id: parseInt(idInput.value)
         }
         saveContact(contact)
     }
