@@ -23,8 +23,8 @@ document.addEventListener('DOMContentLoaded', function() {
         const contactId = document.getElementById('contactId').value;
 
 		const nameError = document.getElementById("nameError")
-		const emailError = document.getElementById("mailError")
-		const birthdateError = document.getElementById("dateError")
+		const emailError = document.getElementById("emailError")
+		const birthdateError = document.getElementById("birthdateError")
 	
 		const validateEmails = (email) => {
 			const regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		}
 
 		  // Nombre
-		  if (name.value) {
+		if (name) {
 			name.ariaInvalid = false
 			nameError.innerText = ""
 			nameError.style.display = "none"
@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', function() {
 			nameError.style.display = "block"
 		}
 		//Email
-		if (validateEmails(email.value)) {
+		if (validateEmails(email)) {
 			email.ariaInvalid = false
 			emailError.innerText = ""
 			emailError.style.display = "none"
@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', function() {
 			emailError.style.display = "block"
 		}
 		// Fecha de nacimiento
-		if (birthdate.value) {
+		if (birthdate) {
 			birthdate.ariaInvalid = false
 			birthdateError.innerText = ""
 			birthdateError.style.display = "none"
