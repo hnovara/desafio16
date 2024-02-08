@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', function() {
 			return regex.test(email)
 		}
 
-		  // Nombre
+		// Nombre
 		if (name) {
 			name.ariaInvalid = false
 			nameError.innerText = ""
@@ -71,7 +71,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
             localStorage.setItem('contacts', JSON.stringify(contacts));
             contactForm.reset();
-            document.getElementById('submit-btn').innerText = 'Add Contact';
             displayContacts();
         } else {
             alert('Complete todos los datos');
